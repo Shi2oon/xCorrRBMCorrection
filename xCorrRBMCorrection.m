@@ -29,7 +29,7 @@
 %     Copyright (c) 2016, Manuel Guizar Sicairos, James R. Fienup,
 %     University of Rochester
 
-clear
+clc; clear
 addpath([pwd '\functions']);
 addpath([pwd '\functions\textprogressbar']);
 addpath([pwd '\functions\efficient_subpixel_registration']);
@@ -38,7 +38,7 @@ fprintf('Written by Phil Earp. philip.earp@stcatz.ox.ac.uk\n\n')
 
 % Load images into workspace
 [ ReferenceImage ] = loadReferenceImage( );
-[ TestImages ] = loadTestImages( );
+[ TestImages ] = loadTestImages(ReferenceImage.pathname);
 
 % Peform cross-correlation
 [ CrossCorrData ] = calculateXCorr( ReferenceImage, TestImages );
@@ -52,5 +52,8 @@ writeImages( TestImages, CorrectedImages );
 % Write results table (containing image movements) to file
 [ ResultsTable ] = writeResults( ...
     ReferenceImage, TestImages, CrossCorrData );
+
+% video
+videoOut(TestImages.pathname, TestImages.filenameArray);
 
 fprintf('xCorrRBMCorrection completed successfully.\n')

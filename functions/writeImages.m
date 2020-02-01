@@ -40,8 +40,7 @@ if exist([pathname 'Corrected'],'dir') == 0
     mkdir(pathname,'Corrected');
 end
 
-textprogressbar(sprintf('%45s','Writing images to file: '))
-textprogressbar(0)
+fprintf(sprintf('%45s','Writing images to file: '))
 
 nTestImages = TestImages.nTestImages;
 % Loop through images and write them to file
@@ -50,8 +49,7 @@ for iTestImages = 1:nTestImages
         filenameArray{iTestImages} '_Corrected.tif'];
     imageFullpath = fullfile(pathname,imageFilename);
     imwrite(CorrectedImages.imageArray{iTestImages},imageFullpath); 
-    textprogressbar((iTestImages/nTestImages)*100)
 end
-textprogressbar('done')
+fprintf(' .. done\n')
 end
 

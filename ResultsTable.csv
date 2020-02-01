@@ -1,3 +1,9 @@
 ReferenceImage,TestImage,ref2TestXShiftPixels,ref2TestYShiftPixels
-9_1.tif,9_1.tif,0,0
-9_1.tif,9_3.tif,-156,-206
+0.tif,0.tif,0,0
+0.tif,1.tif,2,5
+0.tif,2-x1.tif,-6,6
+0.tif,3-x2.tif,-13,8
+0.tif,4-x3.tif,-20,8
+0.tif,5-3x1+1y.tif,-19,-3
+0.tif,6-3x1+1y.tif,-18,-11
+0.tif,7-3x1+1y.tif,-16,-22

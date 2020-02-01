@@ -53,8 +53,7 @@ function [ CorrectedImages ] = generateCorrectedImages(...
 
 nTestImages = TestImages.nTestImages;
 
-textprogressbar(sprintf('%45s','Generating movement-corrected images: '))
-textprogressbar(0)
+fprintf(sprintf('%45s','Generating movement-corrected images: '))
 
 for iTestImages = 1:nTestImages % Loop through each test image
     % Find columns in ith test image which lie in overlap region
@@ -72,7 +71,6 @@ for iTestImages = 1:nTestImages % Loop through each test image
         TestImages.imageArray{iTestImages}... % from ith test image...
         (min(rowsToSelect):max(rowsToSelect), ... % ...select rows...
         min(colsToSelect):max(colsToSelect)); % ...and select cols
-    textprogressbar(0.5*(iTestImages/nTestImages)*100) % [0% - 50%]
 end
 
 % Calculate size of corrected  images (all images in stack have same
@@ -86,8 +84,7 @@ for iTestImages = 1:nTestImages
         int16(1:correctedImageSize(1));
     CorrectedImages.colsArray{iTestImages} = ...
         int16(1:correctedImageSize(2));
-    textprogressbar(50+(0.5*(iTestImages/nTestImages)*100)) % [50% - 100%]
 end
-textprogressbar('done')
+fprintf(' .. done\n')
 end
 

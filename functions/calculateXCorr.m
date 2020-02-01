@@ -54,15 +54,14 @@ ReferenceImage.rows = int16(1:size(ReferenceImage.image,1));
 % [1 2 3 ... nCols]
 ReferenceImage.cols = int16(1:size(ReferenceImage.image,2));
 
-textprogressbar(sprintf('%45s','Calculating FFT cross-correlation: '))
-textprogressbar(0)
+fprintf(sprintf('%45s','Calculating FFT cross-correlation: '))
 nTestImages = TestImages.nTestImages;
 % Loop through Test images
 for iTestImages = 1:nTestImages
     f = ReferenceImage.image;
     g = TestImages.imageArray{iTestImages};
     % An upscale_factor of 1 results in nearest pixel matching
-    upscale_factor = 1;
+    upscale_factor = 20;
     % Perform the image correlation between reference and test images
     [output, ~ ] = dftregistration(fft2(f),fft2(g),upscale_factor);
     % Populate CrossCorrData Struct
@@ -72,9 +71,8 @@ for iTestImages = 1:nTestImages
         ReferenceImage.rows + CrossCorrData.rowShift{iTestImages};
     CrossCorrData.cols{iTestImages} = ...
         ReferenceImage.cols + CrossCorrData.colShift{iTestImages};
-    textprogressbar((iTestImages/nTestImages)*100)
 end
-textprogressbar('done')
+fprintf(' .. done\n')
 % Extract co-ordinates of image overlap throughout image stack
 [ CrossCorrData ] = ...
     calculateImageOverlap( CrossCorrData, ReferenceImage );

@@ -37,8 +37,7 @@ function [ CrossCorrData ] = ...
 rowsToKeep = ReferenceImage.rows;
 colsToKeep = ReferenceImage.cols;
 
-textprogressbar(sprintf('%45s','Calculating image overlap: '))
-textprogressbar(0)
+fprintf(sprintf('%45s','Calculating image overlap: '))
 
 nTestImages = length(CrossCorrData.rows);
 % Calculate image overlap
@@ -46,13 +45,12 @@ for iTestImages = 1:nTestImages % Loop through image stack
     % Calculate intersection of working variable with ith test image
     rowsToKeep = intersect(rowsToKeep,CrossCorrData.rows{iTestImages});
     colsToKeep = intersect(colsToKeep,CrossCorrData.cols{iTestImages});
-    textprogressbar((iTestImages/nTestImages)*100)
 end
 
 % Populate CrossCorrData struct
 CrossCorrData.rowLimits = [rowsToKeep(1) rowsToKeep(end)];
 CrossCorrData.colLimits = [colsToKeep(1) colsToKeep(end)];
 
-textprogressbar('done')
+fprintf(' .. done\n')
 end
 

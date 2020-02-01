@@ -30,6 +30,7 @@ end
 
 % Read image data from .tif file
 im = imread(fullfile(pathname,filename),'tif');
+if size(im,3)>1;        im=mean(im,3)/255;      end % 3 layerd images
 
 % Populate ReferenceImage struct
 ReferenceImage.filename = filename;

@@ -1,5 +1,3 @@
-
-
 function [output, Greg] = dftregistration(buf1ft,buf2ft,usfac)
 % function [output Greg] = dftregistration(buf1ft,buf2ft,usfac);
 % Efficient subpixel image registration by crosscorrelation. This code
@@ -101,7 +99,7 @@ elseif usfac > 1
     row_shift = Nr2(row_shift)/2;
     col_shift = Nc2(col_shift)/2;
     % If upsampling > 2, then refine estimate with matrix multiply DFT
-    if usfac > 2,
+    if usfac > 2
         %%% DFT computation %%%
         % Initial shift estimate in upsampled grid
         row_shift = round(row_shift*usfac)/usfac; 

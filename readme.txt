@@ -6,7 +6,7 @@
 % been cropped to the area defined as the effecive intersection of the
 % original images.
 %
-% Written by Phil Earp as part of DPhil project at University of Oxford.
+% Written by Phil Earp and updated by Abdo Koko as part of DPhil project at University of Oxford.
 % philip.earp@stcatz.ox.ac.uk
 %
 % Last updated and tested 29th December 2017
